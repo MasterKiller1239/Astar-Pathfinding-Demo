@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-//using Zenject;
+using Zenject;
 using System;
 using System.IO;
 
@@ -10,7 +10,7 @@ namespace pathfinding
     public class Pathfinder : MonoBehaviour
     {
         private Transform _target;
-        //[Inject]
+        [Inject]
         private TileGrid _grid;
         [field: SerializeField]
         private List<Node> currentPath;
@@ -26,7 +26,6 @@ namespace pathfinding
 
         public void Start()
         {
-            _grid = transform.parent.GetComponent<TileGrid>();
             _grid.TileChanged += RefreshPath;
         }
 

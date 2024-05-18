@@ -143,10 +143,14 @@ namespace pathfinding
                 { 0, 1 },
                 { 0, -1 }, 
                 { 1, 0 }, 
-                { -1, 0 } 
+                { -1, 0 },
+                { 1, 1 }, 
+                { 1, -1 }, 
+                { -1, 1 }, 
+                { -1, -1 }
             };
 
-            for (int i = 0; i < directions.GetLength(0); i++)
+            for (int i = 0; i < 4; i++) 
             {
                 int checkX = node.gridX + directions[i, 0];
                 int checkY = node.gridY + directions[i, 1];
@@ -154,6 +158,30 @@ namespace pathfinding
                 if (checkX >= 0 && checkX < _gridWidth && checkY >= 0 && checkY < _gridHeight)
                 {
                     neighbours.Add(_grid[checkX, checkY]);
+                }
+            }
+
+            for (int i = 4; i < directions.GetLength(0); i++) 
+            {
+                int checkX = node.gridX + directions[i, 0];
+                int checkY = node.gridY + directions[i, 1];
+
+                if (checkX >= 0 && checkX < _gridWidth && checkY >= 0 && checkY < _gridHeight)
+                {
+                    bool isWalkableCross = false;
+                    if (i == 4) 
+                        isWalkableCross = _grid[node.gridX + 1, node.gridY].walkable && _grid[node.gridX, node.gridY + 1].walkable;
+                    else if (i == 5)
+                        isWalkableCross = _grid[node.gridX + 1, node.gridY].walkable && _grid[node.gridX, node.gridY - 1].walkable;
+                    else if (i == 6)
+                        isWalkableCross = _grid[node.gridX - 1, node.gridY].walkable && _grid[node.gridX, node.gridY + 1].walkable;
+                    else if (i == 7)
+                        isWalkableCross = _grid[node.gridX - 1, node.gridY].walkable && _grid[node.gridX, node.gridY - 1].walkable;
+
+                    if (isWalkableCross)
+                    {
+                        neighbours.Add(_grid[checkX, checkY]);
+                    }
                 }
             }
 
