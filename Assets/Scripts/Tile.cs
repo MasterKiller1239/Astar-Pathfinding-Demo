@@ -89,7 +89,7 @@ namespace pathfinding
         }
         private void OnMouseOver()
         {
-            if (Input.GetMouseButtonDown(3) && !EventSystem.current.IsPointerOverGameObject())
+            if (Input.GetMouseButtonDown(2) && !EventSystem.current.IsPointerOverGameObject())
             {
                 SetWalkable(!IsWalkable);
             }
