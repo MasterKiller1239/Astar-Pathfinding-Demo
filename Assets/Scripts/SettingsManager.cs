@@ -1,7 +1,7 @@
 using pathfinding;
 using UnityEngine;
 using UnityEngine.UI;
-//using Zenject;
+using Zenject;
 
 public class SettingsManager : MonoBehaviour
 {
@@ -15,11 +15,9 @@ public class SettingsManager : MonoBehaviour
     private SliderItem _playerSpeedSlider;
     [SerializeField]
     private SliderItem _walkableRatioSlider;
-    //[Inject]
-    [SerializeField]
+    [Inject]
     private MapGenerator _generator;
-    //[Inject]
-    [SerializeField]
+    [Inject]
     private TileGrid _grid;
 
     public void Start()

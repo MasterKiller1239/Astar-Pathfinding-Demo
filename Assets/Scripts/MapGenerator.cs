@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-//using Zenject;
+using Zenject;
 namespace pathfinding
 {
     public class MapGenerator : MonoBehaviour
@@ -13,8 +13,7 @@ namespace pathfinding
         private int mapHeight = 10;
         [SerializeField]
         private float tileSpacing = 1.1f;
-        // [Inject]
-        [SerializeField]
+        [Inject]
         private TileGrid grid;
         [SerializeField,Range(0, 1)]
         private float walkableRatio = 0.7f;

@@ -2,9 +2,10 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+
 namespace pathfinding
 {
-    public class Tile : MonoBehaviour
+    public class Tile: MonoBehaviour
     {
         [field: SerializeField]
         public MeshRenderer tileWallRenderer { get; private set; }

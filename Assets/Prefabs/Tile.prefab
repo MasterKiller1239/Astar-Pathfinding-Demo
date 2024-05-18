@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 1172833967514974841}
   - component: {fileID: 6311687308815724235}
   - component: {fileID: 206119826560877811}
-  - component: {fileID: 2653446660471493592}
+  - component: {fileID: 6340740411627908852}
   - component: {fileID: -1495668746318078719}
   m_Layer: 0
   m_Name: Tile
@@ -169,7 +169,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2653446660471493592
+--- !u!114 &6340740411627908852
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

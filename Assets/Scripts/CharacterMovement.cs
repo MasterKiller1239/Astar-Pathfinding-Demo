@@ -1,20 +1,19 @@
 using UnityEngine;
 using System.Collections.Generic;
-//using ModestTree;
+using ModestTree;
 using System.Collections;
 using System.Linq;
+using Zenject;
 namespace pathfinding
 {
 
     public class CharacterMovement : MonoBehaviour
     {
-        //[Inject]
+        [Inject]
         private Pathfinder _pathfinder;
-       // [Inject]
+        [Inject]
         private Animator animator;
-        //  [Inject]
-
-        [SerializeField]
+        [Inject]
         private ParticleSystem _system;
 
         private Transform _target;
@@ -26,8 +25,6 @@ namespace pathfinding
 
        public void Start()
         {
-            _pathfinder = GetComponent<Pathfinder>();
-            animator = GetComponent<Animator>();
             _pathfinder.TargetChanged += SetNewTarget;
         }
 
@@ -118,7 +115,7 @@ namespace pathfinding
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * _speed);
         }
-       // public class Factory : PlaceholderFactory<CharacterMovement> { };
+        public class Factory : PlaceholderFactory<CharacterMovement> { };
     }
 }
 

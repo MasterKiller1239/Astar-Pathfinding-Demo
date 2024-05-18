@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 using System;
 using UnityEngine;
-//using Zenject;
+using Zenject;
 using System.Linq;
 
 namespace pathfinding
@@ -31,11 +31,9 @@ namespace pathfinding
 
     public class TileGrid : MonoBehaviour
     {
-        //[Inject]
-        //private CharacterMovement.Factory _factory;
+        [Inject]
+        private CharacterMovement.Factory _factory;
 
-        [SerializeField]
-        private GameObject _playerPrefab;
         private CharacterMovement _player;
         private List<Tile> _tiles;
         private int _gridWidth;
@@ -82,9 +80,8 @@ namespace pathfinding
                 lastClickedTile = clickedTile;
                 var position = lastClickedTile.transform.position;
                 Vector3 spawnLocation = new Vector3(position.x,position.y + 0.5f,position.z);
-                // _player = _factory?.Create();
-                // _player.transform.position = new Vector3(spawnLocation.x, spawnLocation.y + 0.5f, spawnLocation.z);
-                _player = Instantiate(_playerPrefab, spawnLocation, Quaternion.identity).GetComponent<CharacterMovement>();
+                _player = _factory?.Create();
+                _player.transform.position = spawnLocation;
                 _player.transform.SetParent(transform);
                 OnPlayerSpawned();
 
